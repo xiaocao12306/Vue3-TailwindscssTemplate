@@ -2,46 +2,39 @@
   <!--容器  -->
   <div>
     <!-- 头部轮播图 -->
-    <van-swipe class="my-swipe"
-                :autoplay="3000"
-                indicator-color="white">
-      <van-swipe-item v-for="(item) in swiperList"
-                      :key="item.id"
-                      class="w-full">
-        <van-image :src="item.img"
-                    alt=""
-                    class="w-full" />
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item v-for="item,index in swiperList" :key="index" class="w-full">
+        <van-image :src="item" alt="" class="w-full" />
       </van-swipe-item>
     </van-swipe>
-    <van-grid :column-num="3">
-      <van-grid-item icon="location" icon-color="#1fd59a" text="新闻资讯" @click="goToNewsList"/>
-      <van-grid-item icon="share" icon-color="#fc3c4f" text="图片分享" @click="goToShareList"/>
-      <van-grid-item icon="bag" icon-color="#3e80fd" text="商品购买" />
-      <van-grid-item icon="comment-circle" icon-color="#2bc2f7" text="留言反馈" />
-      <van-grid-item icon="video" icon-color="#f95118" text="视频专区" />
-      <van-grid-item icon="phone-circle" icon-color="#ff762a" text="联系我们" />
-    </van-grid>
+    <div>
+      <div v-for="item in newsList" :key="item.id" @click="goToNewsDetail(item.id)">
+        <div class="flex flex-row px-5 pt-5">
+          <div class="flex-1 flex flex-col justify-between">
+            <p class="font-lg font-bold">{{ item.title }}</p>
+            <p class="text-sm van-multi-ellipsis--l2">{{item.content}}</p>
+          </div>
+          <img :src="item.cover_picture" alt="" class="w-20 h-16 rounded m-2" />
+        </div>
+        <van-divider />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
-import { getSwiper } from '../http/api'
+import { getNewsList } from '../http/api'
 const router = useRouter()
 // 设置轮播图照片
-let swiperList = ref([])
+let swiperList = ref(['http://172.18.12.13:8000/static/rubbish_image.png'])
 
-getSwiper().then(res =>{
-    swiperList.value = res
-})
-const goToNewsList = () => {
-  router.push('newsList')
-}
-const goToShareList = () => {
-  router.push('shareList')
-}
+let newsList = ref([])
+getNewsList().then(res => newsList.value = res)
+
+const goToNewsDetail = id => router.push({name:'newsDetail', params:{id}})
+
 </script>
 
-<style>
-</style>
+<style></style>

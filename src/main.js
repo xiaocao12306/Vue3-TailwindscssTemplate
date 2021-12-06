@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import '../style.css'
+
 import {
   Button,
   NavBar,
@@ -36,7 +37,8 @@ import {
   Divider,
   Tab,
   Tabs,
-  ImagePreview
+  ImagePreview,
+  Dialog 
 } from 'vant'
 import router from './route/main'
 
@@ -57,6 +59,7 @@ createApp(App).
   use(Field).
   use(CellGroup).
   use(Notify).
+  use(Dialog).
   use(Cell).
   use(Sidebar).
   use(SidebarItem).

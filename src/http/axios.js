@@ -31,19 +31,11 @@ export async function get(url, params) {
   const res = await axios({
     url, params, method: 'GET'
   })
-  if (res.data.code) {
-    if (res.data.code === 1) {
-      return res.data.data
-    } else {
-      Toast(res.data.msg)
-      console.log(res)
-    }
+  if (res.status === 200) {
+    return res.data
   } else {
-    if (res.data.status === 0) {
-      return res.data
-    } else {
-      Toast(res.data.msg)
-    }
+    Toast(res.status)
+    console.log(res)
   }
 } 
 /**
@@ -56,10 +48,23 @@ export async function post(url, data) {
   const res = await axios({
     url, data, method: 'POST'
   })
-  if (res.data.code === 1) {
-    return res.data.data
+  if (res.status === 200) {
+    return res.data
   } else {
-    Toast('获取数据失败')
+    Toast(res.status)
+    console.log(res)
+  }
+}
+
+export async function put (url, data) {
+  const res = await axios({
+    url,data, method:'PUT'
+  })
+
+  if (res.status === 200) {
+    return res.data
+  } else {
+    Toast(res.status)
     console.log(res)
   }
 }

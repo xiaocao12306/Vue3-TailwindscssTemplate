@@ -16,9 +16,9 @@ export default defineConfig({
     }),
   ],
   proxy: {
-    '/api': {
+    '/': {
       // 后台地址
-      target: 'http://tpadmin.com/',
+      target: 'http://172.18.12.13:8000/',
       changeOrigin: true
     }
   },
