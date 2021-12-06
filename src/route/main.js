@@ -35,6 +35,12 @@ const routes = [
         meta: { title: '百科', index: 1 },
         component: () => import('../view/wiki/index.vue')
       },
+      {
+        path: 'mine',
+        name: 'mine',
+        meta: { title: '个人中心', index: 1 },
+        component: () => import('../view/mine.vue')
+      },
     ]
   }
 ]

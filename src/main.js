@@ -38,7 +38,9 @@ import {
   Tab,
   Tabs,
   ImagePreview,
-  Dialog 
+  Dialog,
+  Uploader,
+  Overlay 
 } from 'vant'
 import router from './route/main'
 
@@ -47,6 +49,7 @@ createApp(App).
   use(router).
   use(Button).
   use(VanImage).
+  use(Overlay).
   use(Swipe).
   use(SwipeItem).
   use(NavBar).
@@ -61,6 +64,7 @@ createApp(App).
   use(Notify).
   use(Dialog).
   use(Cell).
+  use(Uploader).
   use(Sidebar).
   use(SidebarItem).
   use(TreeSelect).

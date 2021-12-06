@@ -48,7 +48,7 @@ export async function post(url, data) {
   const res = await axios({
     url, data, method: 'POST'
   })
-  if (res.status === 200) {
+  if (res.status === 200 || res.status === 201) {
     return res.data
   } else {
     Toast(res.status)
