@@ -1,1 +1,1 @@
-# Vue3-TailwindscssTemplatye
+# Vue3-TailwindscssTemplate
