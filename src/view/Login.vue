@@ -26,7 +26,7 @@
         />
       </van-cell-group>
       <div style="margin: 16px">
-        <van-button round block type="primary" native-type="submit">
+        <van-button round block type="primary" native-type="submit" color="#2ac8dd">
           提交
         </van-button>
       </div>

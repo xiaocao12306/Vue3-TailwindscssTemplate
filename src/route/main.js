@@ -59,6 +59,30 @@ const routes = [
         meta: { title: '个人信息', index: 2 },
         component: () => import('../view/Personal.vue')
       },
+      {
+        path: 'chat',
+        name: 'chat',
+        meta: { title: '通知列表', index: 1 },
+        component: () => import('../view/Chat.vue')
+      },
+      {
+        path: 'scan',
+        name: 'scan',
+        meta: { title: '扫描结果', index: 2 },
+        component: () => import('../view/scanDetail.vue')
+      },
+      {
+        path: 'WikiPersonal',
+        name: 'WikiPersonal',
+        meta: { title: '分类知识', index: 2 },
+        component: () => import('../view/Wiki.vue')
+      },
+      {
+        path: 'rubishDetail',
+        name: 'rubishDetail',
+        meta: { title: '垃圾分类', index: 2 },
+        component: () => import('../view/Rubish.vue')
+      },
     ]
   }
 ]

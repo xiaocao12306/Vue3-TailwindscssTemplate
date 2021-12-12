@@ -36,6 +36,7 @@ import {
   AddressEdit,
   Divider,
   Tab,
+  Tag,
   Tabs,
   ImagePreview,
   Dialog,
@@ -52,6 +53,7 @@ import router from './route/main'
 createApp(App).
   use(router).
   use(IndexBar).
+  use(Tag).
   use(IndexAnchor).
   use(Collapse).
   use(CollapseItem).

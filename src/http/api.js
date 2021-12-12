@@ -36,3 +36,5 @@ export const getGames = () => get('/answer/type/')
 export const answerCountAdd = (userId) => put(`/answer/count_add/${userId}/`)
 
 export const spamReco = params => post('/ai/predict/', params)
+
+export const rankList = () => get('/answer/count_top/100')

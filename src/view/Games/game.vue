@@ -1,27 +1,40 @@
 <template>
   <div>
     <!-- 头像昵称和积分 -->
-    <div class="flex flex-row justify-between p-4">
-      <div class="flex flex-row items-end">
-        <van-image :src="user.avatar" height="30" width="30" round></van-image>
-        <p class="text-blue-400 ml-3 font-bold text-lg">
-          {{ user.answer_count }}
-        </p>
-      </div>
-    </div>
     <!-- 题目主体 -->
     <div class="p-4">
-      <p class="mb-4 text-xl font-bold">
+      <p class="mb-10 text-2xl font-bold text-cyan">
         以下图片中哪个是{{ answer.Answer.Answer_Name }}?
       </p>
       <div class="flex flex-row flex-wrap justify-between">
-        <img
+        <div
           v-for="item in answer.Images"
           :key="item.image_code"
-          :src="item.image_path"
           @click="pickAnswer(item.image_type)"
-          class="mb-5 w-40 h-40 rounded-lg"
-        />
+          class="relative mb-5"
+        >
+          <img :src="item.image_path" class="w-40 h-40 rounded-lg" />
+          <p
+            class="
+              absolute
+              bottom-0
+              bg-gradient-to-t
+              from-black
+              text-white
+              h-10
+              flex
+              items-center
+              w-full
+              justify-center
+            "
+          >
+            {{ item.image_name }}
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex justify-around">
+        <van-button @click="back">结束答题</van-button>
+        <van-button type="primary" @click="nextAnswer" color="#2ac8dd">下一题</van-button>
       </div>
     </div>
   </div>
@@ -37,11 +50,9 @@ import { Dialog } from 'vant'
 let route = useRouter()
 let user = reactive({
   avatar: localStorage.getItem('avatar'),
-  username:null
+  username: null,
 })
-let answer = reactive({
-  
-})
+let answer = reactive({})
 getUser(localStorage.getItem('userid')).then((res) => {
   Object.assign(user, res)
 })
@@ -58,7 +69,7 @@ const pickAnswer = (e) => {
   if (e === answer.Answer.Answer_Name) {
     updateAnswer()
     answerCountAdd(112)
-    user.answer_count ++
+    user.answer_count++
   } else {
     Dialog.alert({
       title: e,
@@ -68,6 +79,9 @@ const pickAnswer = (e) => {
     })
   }
 }
+
+const nextAnswer = () => updateAnswer()
+const back = () => router.back()
 </script>
 
 <style lang="scss" scoped></style>

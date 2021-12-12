@@ -1,42 +1,8 @@
 <template>
-  <div class="h-screen">
-    <van-nav-bar
-      v-if="isNav"
-      class="relative"
-      :title="title"
-      :fixed="true"
-      :placeholder="true"
-    >
+  <div class="h-screen relative">
+    <van-nav-bar v-if="isNav" class="relative" :title="title" :fixed="true" :placeholder="true">
       <template #left>
-        <nav :class="{ active: isActive, 'absolute left-0': true }" id="nav">
-          <ul>
-            <li @click="goTo('/')" :class="{ 'text-blue-500': active === '/' }">
-              首页
-            </li>
-            <li
-              @click="goTo('/gameIndex')"
-              :class="{ 'text-blue-500': active === '/gameIndex' }"
-            >
-              小游戏
-            </li>
-            <li
-              @click="goTo('/wiki')"
-              :class="{ 'text-blue-500': active === '/wiki' }"
-            >
-              百科
-            </li>
-            <li
-              @click="goTo('/mine')"
-              :class="{ 'text-blue-500': active === '/mine' }"
-            >
-              个人
-            </li>
-          </ul>
-          <button class="icon" id="toggle" @click="clickNav">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-          </button>
-        </nav>
+        <van-icon name="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/侧边菜单.png" @click="clickNav" />
       </template>
     </van-nav-bar>
     <van-nav-bar
@@ -51,50 +17,34 @@
     <transition :name="transitionName">
       <router-view class="warp"></router-view>
     </transition>
+    <div :class="{ 'sidebar': true, 'active': isActive }">
+      <div class="sidebar-overlay" @click="close"></div>
+      <div class="sidebar-content">
+        <div class="top-head">
+          <van-image src="https://marketplace.canva.cn/EAEsSl8eCfQ/1/0/1600w/canva-ewokWcowJxA.jpg"></van-image>
+          <div>
+            <div class="name">小曹同学</div>
+            <div class="email">3027478654@qq.com</div>
+          </div>
+        </div>
+        <div class="nav-left">
+          <a href="https://github.com/xiaocao12306" class=" text-base flex items-center mb-2">
+            <van-icon name="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/github.svg" size="26" class="mr-2"></van-icon> GitHub
+          </a>
+          <a href="#" class=" text-base flex items-center mb-2">
+            <van-icon name="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/qq (1).svg" size="26" class="mr-2"></van-icon> 3027478654
+          </a>
+          <a href="#" class=" text-base flex items-center mb-2">
+            <van-icon name="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/wechat.svg" size="26" class="mr-2"></van-icon> WeChat
+          </a>
+          <a href="https://github.com/xiaocao12306" class=" text-base flex items-center mb-2">
+            <van-icon name="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/twitter.svg" size="26" class="mr-2"></van-icon> Twitter
+          </a>
+        </div>
+      </div>
+    </div>
     <!-- 底部导航栏 -->
-    <van-tabbar
-      v-model="active"
-      @change="onChange"
-      :placeholder="true"
-      v-if="isNav"
-    >
-      <van-tabbar-item
-        name="/"
-        :icon="
-          active === '/'
-            ? 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/home.png'
-            : 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/home-1.png'
-        "
-        >首页</van-tabbar-item
-      >
-      <van-tabbar-item
-        name="/gameIndex"
-        :icon="
-          active === '/gameIndex'
-            ? 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/bowl.png'
-            : 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/bowl-1.png'
-        "
-        >小游戏</van-tabbar-item
-      >
-      <van-tabbar-item
-        name="/wiki"
-        :icon="
-          active === '/wiki'
-            ? 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/book.png'
-            : 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/book-1.png'
-        "
-        >垃圾百科</van-tabbar-item
-      >
-      <van-tabbar-item
-        name="/mine"
-        :icon="
-          active === '/mine'
-            ? 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/profile.png'
-            : 'https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/profile-1.png'
-        "
-        >个人中心</van-tabbar-item
-      >
-    </van-tabbar>
+    <TabBar class="fixed bottom-3 w-full flex justify-center" :active="active" v-if="isNav" />
   </div>
 </template>
 
@@ -103,6 +53,7 @@ import { ref } from '@vue/reactivity'
 import { watch } from '@vue/runtime-core'
 // 导入useroute函数
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
+import TabBar from './components/TabBar.vue'
 
 // 声明router函数
 const route = useRoute()
@@ -115,11 +66,7 @@ let isActive = ref(false)
 // 判断是否首页页面
 let isNav = ref(route.meta.index == 1)
 let transitionName = ref('van-slide-right')
-// 监听切换事件
-const onChange = () => {
-  // 切换首页路由
-  router.push(active.value)
-}
+
 // 监听路由切换事件
 onBeforeRouteUpdate((to, from) => {
   // 切换路由之后获取页面名称，然后修改顶部导航栏title
@@ -143,105 +90,79 @@ const goTo = (path) => {
   router.push(path)
   isActive.value = false
 }
+
+const close = () => {
+  isActive.value = false
+}
 </script>
 
 <style>
+:root{
+  --van-blue: #2ac8dd;
+  --van-nav-bar-text-color:var(--van-blue);
+}
 .warp {
   height: calc(100% - 100px);
-}
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-nav {
-  width: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.6s linear;
-  overflow-x: hidden;
-}
-
-nav.active {
-  width: 200px;
-  padding: 20px;
-  background: #fff;
-  height: 1000px;
-  z-index: 100000;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 0;
-  transition: width 0.6s linear;
-}
-
-nav.active ul {
-  width: 100%;
-  padding-top: 300px;
-  font-size: large;
-}
-
-nav ul li {
-  transform: rotateY(0deg);
-  opacity: 0;
-  transition: transform 0.6s linear, opacity 0.6s linear;
-}
-
-nav.active ul li {
-  opacity: 1;
-  padding: 20px 0;
-  transform: rotateY(360deg);
-}
-
-nav ul a {
   position: relative;
-  color: #000;
-  text-decoration: none;
-  margin: 0 10px;
 }
-
-.icon {
-  background-color: #fff;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-  position: relative;
-  height: 30px;
-  width: 30px;
-}
-
-.icon:focus {
-  outline: 0;
-}
-
-.icon .line {
-  background-color: #5290f9;
-  height: 2px;
-  width: 20px;
+.sidebar .sidebar-content,
+.sidebar .sidebar-overlay {
+  top: 0;
+  left: 0;
+  bottom: 0;
   position: absolute;
-  top: 10px;
-  left: 5px;
-  transition: transform 0.6s linear;
+  transition: all 0.3s ease-in-out 0s;
 }
 
-.icon .line2 {
-  top: auto;
-  bottom: 10px;
+.sidebar .sidebar-overlay {
+  right: 0;
+  opacity: 0;
+  width: 100%;
+  z-index: 999;
+  transform: scale(0);
+  background: rgba(0, 0, 0, 0.4);
 }
 
-nav.active .icon .line1 {
-  transform: rotate(-765deg) translateY(5.5px);
+.sidebar .sidebar-content {
+  width: 60%;
+  color: #333;
+  padding: 15px;
+  z-index: 9999;
+  background: #fff;
+  transform: translateX(-100%);
 }
 
-nav.active .icon .line2 {
-  transform: rotate(765deg) translateY(-5.5px);
+.sidebar.active .sidebar-content {
+  transform: translateX(0);
 }
-.van-tabs__line {
-  z-index: 100;
+
+.sidebar.active .sidebar-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sidebar .sidebar-content .top-head .name {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.sidebar .sidebar-content .top-head .email {
+  font-size: 13px;
+  margin-bottom: 50px;
+}
+
+.sidebar .sidebar-content .nav-left > a {
+  color: #333;
+  padding: 10px 0;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+.sidebar .sidebar-content .nav-left > a > span {
+  color: #aaa;
+  font-size: 24px;
+  min-width: 40px;
+  display: inline-block;
 }
 </style>
