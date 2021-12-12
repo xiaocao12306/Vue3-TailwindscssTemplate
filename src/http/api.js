@@ -17,6 +17,14 @@ export const getNewsDetail = pathParams => get(`/article/detail/${pathParams}`)
  */
 export const getUser = pathParams => get(`/user/detail/${pathParams}/`)
 
+/**
+ * 
+ * @param {*} data 用户信息 
+ * @param {Object} {id:账号,username:账户名,password:密码}
+ * @returns 
+ */
+export const signin = data => post('/user/list/', data)
+
 // 获取题目
 export const getGames = () => get('/answer/type/')
 

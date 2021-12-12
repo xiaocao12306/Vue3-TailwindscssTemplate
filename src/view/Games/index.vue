@@ -17,11 +17,11 @@ import { getUser } from '../../http/api'
 
 let route = useRouter()
 let user = reactive({
-  avatar:
-    'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2106223408,2472855119&fm=26&gp=0.jpg',
+  avatar: localStorage.getItem('avatar'),
+  username:null
 })
 
-getUser(112).then((res) => {
+getUser(localStorage.getItem('userid')).then((res) => {
     Object.assign(user, res)
 })
 

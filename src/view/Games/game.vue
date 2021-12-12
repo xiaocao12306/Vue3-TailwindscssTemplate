@@ -36,11 +36,13 @@ import router from '../../route/main'
 import { Dialog } from 'vant'
 let route = useRouter()
 let user = reactive({
-  avatar:
-    'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2106223408,2472855119&fm=26&gp=0.jpg',
+  avatar: localStorage.getItem('avatar'),
+  username:null
 })
-let answer = reactive({})
-getUser(112).then((res) => {
+let answer = reactive({
+  
+})
+getUser(localStorage.getItem('userid')).then((res) => {
   Object.assign(user, res)
 })
 
@@ -60,7 +62,7 @@ const pickAnswer = (e) => {
   } else {
     Dialog.alert({
       title: e,
-      message: '傻逼，这都能答错',
+      message: '答错了',
     }).then(() => {
       router.back()
     })

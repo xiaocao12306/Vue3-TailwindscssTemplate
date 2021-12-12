@@ -1,0 +1,2 @@
+import{V as n,X as r,o as c,c as l,a4 as t,Z as s,a7 as i}from"./vendor.b6e1679d.js";import{a as p}from"./api.be34e879.js";const u=["src"],_={class:"p-5 text-xl font-bold"},d=["innerHTML"],b={setup(m){const a=n().params.id;let e=r({});return p(a).then(o=>{e.value=o}),(o,h)=>(c(),l("div",null,[t("img",{src:s(e).cover_picture,alt:""},null,8,u),t("p",_,i(s(e).title),1),t("div",{innerHTML:s(e).content,class:"px-5"},null,8,d)]))}};export{b as default};
+//# sourceMappingURL=NewDetail.4aa31ec0.js.map

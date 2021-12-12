@@ -41,6 +41,24 @@ const routes = [
         meta: { title: '个人中心', index: 1 },
         component: () => import('../view/mine.vue')
       },
+      {
+        path: 'login',
+        name: 'login',
+        meta: { title: '登录注册', index: 2 },
+        component: () => import('../view/Login.vue')
+      },
+      {
+        path: 'star',
+        name: 'star',
+        meta: { title: '收藏', index: 2 },
+        component: () => import('../view/Star.vue')
+      },
+      {
+        path: 'personal',
+        name: 'personal',
+        meta: { title: '个人信息', index: 2 },
+        component: () => import('../view/Personal.vue')
+      },
     ]
   }
 ]

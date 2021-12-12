@@ -40,13 +40,21 @@ import {
   ImagePreview,
   Dialog,
   Uploader,
-  Overlay 
+  Overlay,
+  IndexBar, 
+  IndexAnchor,
+  Collapse,
+  CollapseItem
 } from 'vant'
 import router from './route/main'
 
 
 createApp(App).
   use(router).
+  use(IndexBar).
+  use(IndexAnchor).
+  use(Collapse).
+  use(CollapseItem).
   use(Button).
   use(VanImage).
   use(Overlay).
