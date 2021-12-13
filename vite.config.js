@@ -18,7 +18,7 @@ export default defineConfig({
   proxy: {
     '/': {
       // 后台地址
-      target: 'http://172.18.12.13:8000/',
+      target: 'http://172.16.84.201:8000/',
       changeOrigin: true
     }
   },

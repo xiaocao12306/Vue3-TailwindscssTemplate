@@ -39,7 +39,7 @@
           <van-image src="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/厨余垃圾.png" width="80" height="80"></van-image>
         </van-grid-item>
         <van-grid-item @click="goTo('可回收垃圾')">
-          <van-image src="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/有害垃圾.svg" width="80" height="80"></van-image>
+          <van-image src="https://pic-xiaocao123-1304191709.cos.ap-guangzhou.myqcloud.com/可回收物.png" width="80" height="80"></van-image>
         </van-grid-item>
       </van-grid>
     </div>
@@ -71,7 +71,7 @@ const afterRead = (file, detail) => {
   }
 
 const goTo = e =>{
-  router.push({name:'rubishDetail', params: {type: e}})
+  router.push('star')
 }
 </script>
 

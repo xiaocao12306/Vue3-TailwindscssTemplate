@@ -7,9 +7,16 @@
         alt=""
         class="rounded-full w-8 h-8"
       />
-      <p class=" ml-2" style="color: #2ac8dd;">小曹同学</p>
+      <p class="ml-2" style="color: #2ac8dd">小曹同学</p>
       <p class="text-gray-500 ml-2">2021-12-12 17:42</p>
     </div>
+    <video
+      src="../../assets/219512070-1-208.mp4"
+      autoplay
+      webkit-playsinline="true"
+      playsinline="true"
+      x5-video-player-type="h5-page"
+    ></video>
     <div v-html="news.content"></div>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="container p-5 flex flex-col items-center">
     <div class="w-full">
       <ul class="w-full">
-        <li v-for="(item, index) in rank" :key="index" class="flex justify-around w-full items-center">
+        <li v-for="(item, index) in rank" :key="index" class="flex justify-around w-full items-center mb-2">
           <van-image :src="avatarArr[index]" round width="50" height="50"></van-image>
           <p class="text-lg">{{item.username}}</p>
           <p :class="{'text-cyan font-bold text-lg': index < 3 }">{{item.answer_count}}</p>

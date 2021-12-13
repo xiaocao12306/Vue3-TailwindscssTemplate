@@ -30,7 +30,7 @@ import { useRouter } from 'vue-router'
 import { getUser } from '../http/api'
 import { avatarArr } from '../config'
 let router = useRouter()
-localStorage.setItem('avatar',avatarArr[parseInt(Math.random(4))])
+localStorage.setItem('avatar',avatarArr[parseInt(Math.random(5) * 10)])
 let user = reactive({
   avatar: localStorage.getItem('avatar'),
   username:'点击登录'
