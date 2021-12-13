@@ -44,13 +44,15 @@ import {
   IndexBar, 
   IndexAnchor,
   Collapse,
-  CollapseItem
+  CollapseItem,
+  Tag
 } from 'vant'
 import router from './route/main'
 
 
 createApp(App).
   use(router).
+  use(Tag).
   use(IndexBar).
   use(IndexAnchor).
   use(Collapse).

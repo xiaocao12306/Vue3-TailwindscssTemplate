@@ -28,7 +28,7 @@ import { useRouter } from 'vue-router'
 import { getNewsList } from '../http/api'
 const router = useRouter()
 // 设置轮播图照片
-let swiperList = ref(['http://172.18.12.13:8000/static/rubbish_image.png','http://172.18.12.13:8000/static/rubbish_image2.png'])
+let swiperList = ref(['http://172.16.84.201:8000/static/rubbish_image.png','http://172.16.84.201:8000/static/rubbish_image2.png'])
 
 let newsList = ref([])
 getNewsList().then(res => newsList.value = res)

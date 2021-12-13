@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen relative">
     <van-nav-bar
       v-if="isNav"
       class="relative"
@@ -8,35 +8,10 @@
       :placeholder="true"
     >
       <template #left>
-        <nav :class="{ active: isActive, 'absolute left-0': true }" id="nav">
-          <ul>
-            <li @click="goTo('/')" :class="{ 'text-blue-500': active === '/' }">
-              首页
-            </li>
-            <li
-              @click="goTo('/gameIndex')"
-              :class="{ 'text-blue-500': active === '/gameIndex' }"
-            >
-              小游戏
-            </li>
-            <li
-              @click="goTo('/wiki')"
-              :class="{ 'text-blue-500': active === '/wiki' }"
-            >
-              百科
-            </li>
-            <li
-              @click="goTo('/mine')"
-              :class="{ 'text-blue-500': active === '/mine' }"
-            >
-              个人
-            </li>
-          </ul>
-          <button class="icon" id="toggle" @click="clickNav">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-          </button>
-        </nav>
+        <button class="icon" id="toggle" @click="clickNav">
+          <div class="line line1"></div>
+          <div class="line line2"></div>
+        </button>
       </template>
     </van-nav-bar>
     <van-nav-bar
@@ -51,6 +26,70 @@
     <transition :name="transitionName">
       <router-view class="warp"></router-view>
     </transition>
+    <transition name="van-slide-left">
+      <div
+        class="absolute top-0 bottom-0 w-3/4 bg-white z-50 animation"
+        v-if="isActive"
+      >
+        <aside
+          id="sidebar"
+          class="sidebar sidebar-default open"
+          role="navigation"
+        >
+          <!-- Sidebar header -->
+          <div
+            class=" bg-contain h-44 flex flex-col"
+            style="
+              background-image: url(https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);
+            "
+          >
+            <div class=' h-10 w-full bg-opacity-20 bg-black'></div>
+            <!-- Sidebar brand image -->
+            <div class="  overflow-hidden flex-1 flex items-center p-4">
+              <img
+              class="rounded-full w-14 h-14"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg"
+              />
+            </div>
+            <!-- Sidebar brand name -->
+            <a
+              class=" bg-black bg-opacity-20 h-12 w-full p-4 flex items-centet justify-center text-white"
+            >
+              wangdaitao1940233242@gmail.com
+            </a>
+          </div>
+
+          <!-- Sidebar navigation -->
+          <ul class="p-4 font-bold text-gray-900">
+            <li class="p-4 mb-2">
+              <a href="#">
+                <van-icon name="thumb-circle" size="26" class="mr-8" color="#777bce" />
+                Inbox
+              </a>
+            </li>
+            <li class="p-4 mb-2">
+              <a href="#">
+                <van-icon name="star" size="26" class="mr-8"  color="#ec9433"/>
+                Starred
+              </a>
+            </li>
+            <li class="p-4 mb-2">
+              <a href="#">
+                <van-icon name="invitation" size="26" class="mr-8"  color="#6f9388"/>
+                Sent Mail
+              </a>
+            </li>
+            <li class="p-4 mb-2">
+              <a href="#">
+                <van-icon name="smile" size="26" class="mr-8" color="#ce3b3b"/>
+                Drafts
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </transition>
+    <van-overlay :show="isActive" @click="isActive = false"></van-overlay>
     <!-- 底部导航栏 -->
     <van-tabbar
       v-model="active"
@@ -155,56 +194,6 @@ const goTo = (path) => {
   box-sizing: border-box;
 }
 
-nav {
-  width: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.6s linear;
-  overflow-x: hidden;
-}
-
-nav.active {
-  width: 200px;
-  padding: 20px;
-  background: #fff;
-  height: 1000px;
-  z-index: 100000;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 0;
-  transition: width 0.6s linear;
-}
-
-nav.active ul {
-  width: 100%;
-  padding-top: 300px;
-  font-size: large;
-}
-
-nav ul li {
-  transform: rotateY(0deg);
-  opacity: 0;
-  transition: transform 0.6s linear, opacity 0.6s linear;
-}
-
-nav.active ul li {
-  opacity: 1;
-  padding: 20px 0;
-  transform: rotateY(360deg);
-}
-
-nav ul a {
-  position: relative;
-  color: #000;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
 .icon {
   background-color: #fff;
   border: 0;
@@ -233,15 +222,11 @@ nav ul a {
   top: auto;
   bottom: 10px;
 }
-
-nav.active .icon .line1 {
-  transform: rotate(-765deg) translateY(5.5px);
-}
-
-nav.active .icon .line2 {
-  transform: rotate(765deg) translateY(-5.5px);
-}
 .van-tabs__line {
   z-index: 100;
+}
+.top-bar {
+  height: 25px;
+  background: rgba(0, 0, 0, 0.1);
 }
 </style>
