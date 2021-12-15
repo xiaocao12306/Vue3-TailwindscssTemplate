@@ -1,0 +1,2 @@
+import{r as t,o as c,c as l,a as e,a6 as _}from"./vendor.fb7a9a94.js";const p={setup(r){return(s,i)=>{const a=t("van-index-anchor"),n=t("van-cell"),o=t("van-index-bar");return c(),l("div",null,[e(o,null,{default:_(()=>[e(a,{index:"A"}),e(n,{title:"\u6587\u672C"}),e(a,{index:"B"}),e(n,{title:"\u6587\u672C"}),e(n,{title:"\u6587\u672C"}),e(n,{title:"\u6587\u672C"})]),_:1})])}}};export{p as default};
+//# sourceMappingURL=Rubish.0181fbc1.js.map
