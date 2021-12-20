@@ -4,14 +4,12 @@ export let HOST = {
 }
 
 export const avatarArr = [
-  'http://img.yao51.com/jiankangtuku/ijidbeifz.jpeg',
-  'https://www.mp3pc.com/uploads/0df1cf65ae7ff1eb30953a749295338d.jpg',
-  'https://lh3.googleusercontent.com/proxy/62l1mZEpEqoMJfJWd1cjLhP-4GY3jCuMMFgUwDQHgy0nKjHOOfxcO2c55ooEAEYuUkBNTWEmF9eifEnBPifJQYNkuhGUjWFsK_rsP6PPRjdJ67eNSvQ',
-  'http://inews.gtimg.com/newsapp_bt/0/13203975776/1000.jpg',
-  'https://y.qichejiashi.com/tupian/upload/275074325.jpg',
-  'http://image.biaobaiju.com/uploads/20191228/dab81eb26a4074ea8c1ee431fb81b62f.jpg',
-  'https://imgo168.928vbi.com/img2021/8/30/11/2021083072929262.jpg',
-  'https://lh3.googleusercontent.com/proxy/E3bPKleQ8T8C_Wi_Jq-FpOkeMiZyxXTfNhg0NXIsTPpg50m9z8Mis5g-0QKNG1cuY8s3KPP4j0dlTdRfie0ATrQ-PIoYHmtjp3CMhCoPaectPRozf_U_EESL1A'
+  'src/assets/avatars/1.jpg',
+  'src/assets/avatars/2.jpg',
+  'src/assets/avatars/3.jpg',
+  'src/assets/avatars/4.jpg',
+  'src/assets/avatars/5.jpg',
+  'src/assets/avatars/6.jpg'
 ]
 
 export const aboutRubish = () => {

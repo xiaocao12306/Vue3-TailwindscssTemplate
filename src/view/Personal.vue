@@ -1,10 +1,10 @@
 <template>
   <div>
     <van-cell-group>
-      <van-cell title="用户名" :value="user.username" />
-      <van-cell title="用户id" :value="user.id" />
-      <van-cell title="注册时间" :value="user.create_time" />
-      <van-cell title="积分" :value="user.answer_count" />
+      <van-cell title="用户名" value="小曹" />
+      <van-cell title="用户id" value="12345678" />
+      <van-cell title="注册时间" value="2021-12-10 12:00" />
+      <van-cell title="积分" value="14" />
     </van-cell-group>
   </div>
 </template>

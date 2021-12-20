@@ -25,8 +25,5 @@ export default defineConfig({
   build: {
     sourcemap: true,
     cssCodeSplit: true
-  },
-  server: {
-    host:'172.16.200.85'
   }
 })

@@ -49,7 +49,6 @@
 <script setup>
 import { reactive, ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
-import { P } from '../../dist/assets/vendor.b6e1679d'
 import { spamReco } from '../http/api'
 const router = useRouter()
 // 设置轮播图照片
